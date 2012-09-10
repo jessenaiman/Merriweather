@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @band.name
+%p
+  %b Content:
+  = @band.content
+%p
+  %b Image:
+  = @band.image
+
+= link_to 'Edit', edit_band_path(@band)
+\|
+= link_to 'Back', bands_path

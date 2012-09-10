@@ -1,0 +1,31 @@
+%h1 Listing bands
+
+%table
+  %tr
+    %th Action
+    %th Name
+    %th Content
+    %th Artists
+  - @bands.each do |band|
+    %tr
+      %td
+        .btn-group
+          %button{:class=>'btn btn-primary dropdown-toggle btn-mini', :data=>{:toggle => 'dropdown'}}
+            Action
+            %span{:class => 'caret'}
+          %ul{:class=>"dropdown-menu"}
+            %li
+              = link_to 'Show', band 
+            %li
+              = link_to 'Edit', edit_band_path(band)
+            %li
+              = link_to 'Destroy', band, :confirm => 'Are you sure?', :method => :delete
+      %td= band.name
+      %td= band.content
+      - Artist.where(band_ids: band.id).each do |artist|
+        %td
+          =link_to artist.name, edit_artist_path(artist) 
+
+%br
+
+= link_to 'New Band', new_band_path

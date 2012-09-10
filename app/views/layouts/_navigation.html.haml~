@@ -1,0 +1,104 @@
+%ul.nav
+  %li 
+    =link_to "Home", home_path
+  %li
+    =link_to "Catalogue", "/catalogue"
+  %li.dropdown
+    %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+      News
+      %b.caret
+    %ul.dropdown-menu
+      %li
+        = link_to "News", posts_path
+      - if user_signed_in?
+        %li
+          = link_to 'Add New Article', new_post_path
+  %li.dropdown
+    %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+      Albums
+      %b.caret
+    %ul.dropdown-menu
+      %li
+        = link_to "Albums", albums_path
+      = albums_menu
+      - if user_signed_in?
+        %li
+          = link_to 'New Album', new_album_path
+  %li.dropdown
+    %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+      Artists
+      %b.caret
+    %ul.dropdown-menu
+      %li
+        = link_to "Artists", artists_path
+      = artists_menu
+      - if user_signed_in?
+        %li
+          = link_to 'New Artist', new_artist_path 
+  %li.dropdown
+    %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+      Reviews
+      %b.caret
+    %ul.dropdown-menu
+      %li
+        = link_to "Reviews", reviews_path
+      - if user_signed_in?
+        %li
+          = link_to 'New Reviews', new_review_path
+  %li.dropdown
+    %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+      Songs
+      %b.caret
+    %ul.dropdown-menu
+      %li
+        = link_to "Songs", songs_path
+      - if user_signed_in?
+        %li
+          = link_to 'New Songs', new_song_path
+  %li.dropdown
+    %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+      Videos
+      %b.caret
+    %ul.dropdown-menu
+      %li
+        = link_to "Videos", videos_path
+      - if user_signed_in?
+        %li
+          = link_to 'New Videos', new_video_path 
+  %li.dropdown
+    %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+      Bands
+      %b.caret
+    %ul.dropdown-menu
+      %li
+        = link_to "Bands", bands_path
+      = bands_menu
+      - if user_signed_in?
+        %li
+          = link_to "New Band", new_band_path
+  %li.dropdown
+    %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+      Stores
+      %b.caret
+    %ul.dropdown-menu
+      %li
+        = link_to "Stores", stores_path
+      %li
+        = link_to "Store Locator", "locator"
+  %li.dropdown
+    %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+      Account
+      %b.caret
+    %ul.dropdown-menu
+      - if user_signed_in?
+        %li
+          = link_to 'Logout', destroy_user_session_path, :method=>'delete'
+      - else
+        %li
+          = link_to'Login', new_user_session_path
+      - if user_signed_in?
+        %li
+          = link_to('Edit account', edit_user_registration_path)
+      - else
+        %li
+          = link_to('Sign up', new_user_registration_path)

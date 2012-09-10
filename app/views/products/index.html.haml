@@ -1,0 +1,47 @@
+%h2 Merriweather Recordings
+
+%ul{:class => 'nav nav-pills'}
+  %li{:class=> params.has_key?(:id) || 'active'}
+    = link_to 'All', :controller => "products", :action => "index"
+  - Genre.all.each do |g|
+    %li{:class=> (g.id.to_s == params[:id].to_s) ? 'active' : '' }
+      = link_to g.name, :controller => "products", :action => "index", :id =>  g.id
+
+%table.table.table-striped
+  %thead
+    %tr
+      %th
+      %th Name
+      %th Image
+      %th Genre
+      %th Released
+      %th Songs
+      %th Reviews
+      %th Band
+  - @products.each do |product|
+    %tbody
+      %tr
+        %td
+          .btn-group
+            %button{:class=>'btn btn-primary dropdown-toggle btn-mini', :data=>{:toggle => 'dropdown'}}
+              Action
+              %span{:class => 'caret'}
+            %ul{:class=>"dropdown-menu"}
+              %li
+                = link_to 'Show', product 
+              %li
+                = link_to 'Edit', edit_product_path(product)
+              %li
+                = link_to 'Destroy', product, :confirm => 'Are you sure?', :method => :delete
+        %td
+          %b= product.name
+        %td= image_tag product.image_url(:thumb).to_s
+        %td= product.genre.name
+        %td= product.release_date
+        %td= comma_seperated_links_for product.songs
+        %td= link_to 'View Reviews', edit_review_path(product)
+        %td product.band.name
+
+%br
+
+= link_to 'New Album', new_product_path

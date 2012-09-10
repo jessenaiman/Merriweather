@@ -1,0 +1,12 @@
+%h3 Welcome to Merriweather Records
+= content_for(:side_bar) do
+	%h3 Latest Albums
+	- @recentAlbums.each do |album|
+		%a{:href => album_path(album)}
+		= image_tag album.image.url.to_s
+- @posts.each do |post|
+	.row
+		.span8
+			%h2= post.title
+			=raw post.content
+	%hr

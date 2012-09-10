@@ -1,0 +1,17 @@
+%h1 Listing helps
+
+%table
+  %tr
+    %th
+    %th
+    %th
+
+  - @helps.each do |help|
+    %tr
+      %td= link_to 'Show', help
+      %td= link_to 'Edit', edit_help_path(help)
+      %td= link_to 'Destroy', help, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Help', new_help_path

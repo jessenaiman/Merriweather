@@ -1,0 +1,29 @@
+- content_for :javascript_includes do
+  = javascript_include_tag "audiojs/audio.js"
+
+:javascript
+  $('#release_date').datepicker();  
+
+= simple_form_for(@product) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input       :name
+    = f.input       :heading
+    = f.input       :image, as: :image_preview, input_html: {preview_version: :thumb}
+    %br
+    = f.input             :release_date, :as => :date
+    = f.association       :genre,    :prompt => 'Select Genre'
+    = f.association       :band,   :prompt => 'Select Band'
+    = f.association							:product_type, :prompt => 'Product Type'
+    = f.cktext_area       :content
+    = f.input             :gemm
+
+  .form-actions
+  = f.button :submit
+
+%br
+= render 'playlist'
+
+= content_for(:side_bar) do
+  Put something here

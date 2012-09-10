@@ -1,0 +1,30 @@
+%h2 Listing all webpages
+
+.row
+  .span2
+    %h5 Action
+  .span4
+    %h5 Name
+%hr
+
+- @posts.each do |post|
+  .row
+    .span2
+      .btn-group
+        %button{:class=>'btn btn-primary dropdown-toggle btn-mini', :data=>{:toggle => 'dropdown'}}
+          Action
+          %span{:class => 'caret'}
+        %ul{:class=>"dropdown-menu"}
+          %li
+            = link_to 'Show', post 
+          %li
+            = link_to 'Edit', edit_post_path(post)
+          %li
+            = link_to 'Destroy', post, :confirm => 'Are you sure?', :method => :delete
+    .span4
+      = post.title
+  %hr
+
+%br
+
+= link_to 'New Page', new_post_path, :class => 'btn'

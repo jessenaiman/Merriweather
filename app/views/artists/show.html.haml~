@@ -1,0 +1,24 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @artist.name
+%p
+  %b Email:
+  = @artist.email
+%p
+  %b Content:
+  =raw @artist.content
+%p
+  = image_tag @artist.image
+
+- if user_signed_in?
+  = link_to 'Edit', edit_artist_path(@artist)
+  \|
+  = link_to 'Back', artists_path
+
+= content_for(:side_bar) do
+  - @bands.each do |band|
+    - band.albums.each do |album|
+      = link_to album.name, product_path(album) unless album.blank?
+		  = image_tag album.image.url.to_s

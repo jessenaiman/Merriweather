@@ -1,0 +1,19 @@
+- content_for :javascript_includes do
+  = javascript_include_tag "mw_locator.js"
+  = javascript_include_tag "http://maps.google.com/maps/api/js?sensor=false"
+
+#gmaps-error
+.row
+  .span6
+    = simple_form_for @store, :html=>{:class=>"form-horizontal"} do |f|
+      %fieldset
+        = f.input :address, :placeholder=>'Start typing a place name...', :value => @address, :html=>{:class=>"input-xlarge"}
+        = f.input :name
+        = f.input :phone
+        = f.input :url
+        = f.input :lat
+        = f.input :lng
+        .form-actions
+          = f.button :submit, :class=>'btn btn-primary'
+  .span3
+    #gmaps-canvas{:width=>'400px', :height=>'400px'}

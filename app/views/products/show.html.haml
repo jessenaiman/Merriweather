@@ -1,0 +1,22 @@
+%p#notice= notice
+
+%h1= @product.name
+%h3= @product.heading
+.row
+  .span9.theworks
+    .imagewrap 
+      = image_tag @product.image_url.to_s
+    .imagecontent
+      = raw @product.content
+%br
+
+.row
+  .span9
+    = render "playlist"
+- if user_signed_in?
+  = link_to 'Edit', edit_product_path(@product)
+  \|
+  = link_to 'Back', products_path
+
+= content_for(:side_bar) do
+  = comma_seperated_links_for @band.artists

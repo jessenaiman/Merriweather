@@ -1,0 +1,20 @@
+- content_for :javascript_includes do
+	= javascript_include_tag "audiojs/audio.js"
+
+:javascript
+	audiojs.events.ready(function() {
+		var as = audiojs.createAll();
+	});
+
+= simple_form_for(@song) do |f|
+	= f.error_notification
+
+	.form-inputs
+		= f.input :name
+		= f.association  :album, :prompt => 'Select Album'
+		= f.input :mp3
+		= audio_tag @song.mp3, :preload=>"auto"
+    
+
+	.form-actions
+		= f.button :submit

@@ -1,0 +1,31 @@
+= content_for :script do
+  :javascript
+    $(function(){
+      window.page = new Product(#{@product.to_json});
+      ko.applyBindings(window.page)
+    });
+
+%h2 Merriweather Recordings
+
+%ul{:class => 'nav nav-pills'}
+  %li{:class=> params.has_key?(:id) || 'active'}
+    = link_to 'All', :controller => "products", :action => "catalogue"
+  - Genre.all.each do |g|
+    %li{:class=> (g.id.to_s == params[:id].to_s) ? 'active' : '' }
+      = link_to g.name, :controller => "products", :action => "catalogue", :id =>  g.id
+
+
+- @products.each do |album|
+  .product.span4
+    %h3= album.name
+    %br
+    = image_tag album.image.url(:thumb)
+    %br
+    = link_to 'View Reviews', edit_review_path(album)
+    %br
+    = album.band.name
+
+%br
+.row
+  .span9
+    = link_to 'New Album', new_product_path, :class=>'btn'

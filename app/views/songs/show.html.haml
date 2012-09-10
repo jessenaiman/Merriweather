@@ -1,0 +1,22 @@
+- content_for :javascript_includes do
+	= javascript_include_tag "audiojs/audio.js"
+
+:javascript
+	audiojs.events.ready(function() {
+		var as = audiojs.createAll();
+	});
+
+%p#notice= notice
+
+%p
+	%b Name:
+	= @song.name
+%p
+	= audio_tag @song.mp3, :src => @song.mp3
+%p
+	%b Album:
+	= @song.album.name
+
+= link_to 'Edit', edit_song_path(@song)
+\|
+= link_to 'Back', songs_path

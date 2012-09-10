@@ -1,0 +1,12 @@
+= simple_form_for @band, :html => {:class => 'form-horizontal' } do |f|
+	= f.error_notification
+
+	.form-inputs
+		=f.input :name
+		= f.input :image, as: :image_preview, input_html: {preview_version: :thumb}
+		= f.check_box :self_titled
+		Self Titled
+		= f.association :artists, :collection => Artist.all, :prompt => "Choose Artists", :as => :check_boxes
+		= f.cktext_area :content
+	.form-actions
+		= f.button :submit

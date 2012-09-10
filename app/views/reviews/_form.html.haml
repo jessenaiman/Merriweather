@@ -1,0 +1,10 @@
+= simple_form_for(@review) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :name
+    = f.association :album
+    = f.input :content, :as => :ckeditor, :label => false
+
+  .form-actions
+    = f.button :submit

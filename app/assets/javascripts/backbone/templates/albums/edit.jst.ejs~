@@ -1,0 +1,63 @@
+<h1>Edit album</h1>
+
+<form id="edit-album" name="album">
+  <div class="field">
+    <label for="name"> name:</label>
+    <input type="text" name="name" id="name" value="<%= name %>" >
+  </div>
+  
+  <div class="field">
+    <label for="heading"> heading:</label>
+    <input type="text" name="heading" id="heading" value="<%= heading %>" >
+  </div>
+
+  <div class="control-group image_preview optional">
+    <label for="image" class="image_preview optional control-label"> image:</label>
+    <input type="file" class="image_preview optional" name="image" id="image" value="<%= image %>" >
+  </div>
+
+  <div class="field">
+    <label for="gemm"> gemm:</label>
+    <input type="text" name="gemm" id="gemm" value="<%= gemm %>" >
+  </div>
+
+  <div class="field">
+    <label for="content"> content:</label>
+    <input type="textarea" class="ckeditor" name="content" id="content" value="<%= content %>" >
+  </div>
+
+  <div class="field">
+    <label for="release_date"> release_date:</label>
+    <input type="text" name="release_date" id="release_date" value="<%= release_date %>" >
+  </div>
+
+<% if(genres.length > 1) { %>
+  <div> Band Count </div>
+<% } %>
+  <div class="field">
+    <label for="band_id"> band_id:</label>
+    <input type="text" name="band_id" id="band_id" value="<%= band_id %>" >
+  </div>
+
+  <div class="field">
+    <label for="genre_id"> genre_id:</label>
+    <input type="text" name="genre_id" id="genre_id" value="<%= genre_id %>" >
+  </div>
+
+
+  <div class="actions">
+    <input type="submit" value="Update Album" />
+  </div>
+
+</form>
+
+<a href="#/index">Back</a>
+
+<script type="text/javascript">
+//&lt;![CDATA[
+$(document).ready(function(){ 
+  if (CKEDITOR.instances['content']) {CKEDITOR.remove(CKEDITOR.instances['content']);}CKEDITOR.replace('content', {"language":"en","class":["ckeditor","optional"]}); 
+  $('#release_date').datepicker();
+});
+//]]&gt;
+</script>

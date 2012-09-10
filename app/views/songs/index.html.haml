@@ -1,0 +1,37 @@
+- content_for :javascript_includes do
+  = javascript_include_tag "audiojs/audio.js"
+
+:javascript
+  audiojs.events.ready(function() {
+    var as = audiojs.createAll();
+  });
+  
+%h1 Listing songs
+
+%table.table
+  %tr
+    %th.span2
+    %th.span2 Name
+    %th Mp3
+    %th Ogg
+
+  - @songs.each do |song|
+    %tr
+      %td
+        .btn-group
+          %button{:class=>'btn btn-primary dropdown-toggle btn-mini', :data=>{:toggle => 'dropdown'}}
+            Action
+            %span{:class => 'caret'}
+          %ul{:class=>"dropdown-menu"}
+            %li
+              = link_to 'Show', song 
+            %li
+              = link_to 'Edit', edit_song_path(song)
+            %li
+              = link_to 'Destroy', song, :confirm => 'Are you sure?', :method => :delete
+      %td= song.name
+      %td= audio_tag song.mp3
+
+%br
+
+= link_to 'New Song', new_song_path, :class => 'btn'

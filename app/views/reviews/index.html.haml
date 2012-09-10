@@ -1,0 +1,30 @@
+%h1 Listing reviews
+
+%table
+  %tr
+    %th Name
+    %th Content
+    %th Artist
+    %th
+
+  - @reviews.each do |review|
+    %tr
+      %td= review.name
+      %td= review.content
+      %td= review.artist
+      %td
+        .btn-group
+          %button{:class=>'btn btn-primary dropdown-toggle btn-mini', :data=>{:toggle => 'dropdown'}}
+            Action
+            %span{:class => 'caret'}
+          %ul{:class=>"dropdown-menu"}
+            %li
+              = link_to 'Show', review 
+            %li
+              = link_to 'Edit', edit_review_path(review)
+            %li
+              = link_to 'Destroy', review, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Review', new_review_path
