@@ -37,7 +37,7 @@
           %b= product.name
         %td= image_tag product.image_url(:thumb).to_s
         %td= product.genre.name
-        %td= product.release_date
+        %td= product.available_on
         %td= comma_seperated_links_for product.songs
         %td= link_to 'View Reviews', edit_review_path(product)
         %td product.band.name
