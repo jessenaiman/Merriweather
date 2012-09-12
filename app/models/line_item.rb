@@ -45,7 +45,7 @@ module Merriweather
     end
 
     def sufficient_stock?
-      return true if Spree::Config[:allow_backorders]
+      return true if Merriweather::Config[:allow_backorders]
       if new_record? || !order.completed?
         variant.on_hand >= quantity
       else

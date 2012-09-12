@@ -1,4 +1,4 @@
-module Spree
+module Merriweather
   class Country < ActiveRecord::Base
     has_many :states, :order => "name ASC"
 

@@ -1,6 +1,6 @@
-MusicStore.Views.Posts ||= {}
+Merriweather.Views.Posts ||= {}
 
-class MusicStore.Views.Posts.PostView extends Backbone.View
+class Merriweather.Views.Posts.PostView extends Backbone.View
   template: JST["backbone/templates/posts/post"]
 
   events:

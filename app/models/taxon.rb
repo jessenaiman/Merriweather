@@ -1,4 +1,4 @@
-module Spree
+module Merriweather
   class Taxon < ActiveRecord::Base
     acts_as_nested_set :dependent => :destroy
 
@@ -18,10 +18,10 @@ module Spree
       :path => ':rails_root/public/spree/taxons/:id/:style/:basename.:extension',
       :default_url => '/assets/default_taxon.png'
 
-    include Spree::Core::S3Support
+    include Merriweather::Core::S3Support
     supports_s3 :icon
 
-    include ::Spree::ProductFilters  # for detailed defs of filters
+    include ::Merriweather::ProductFilters  # for detailed defs of filters
 
     # indicate which filters should be used for a taxon
     # this method should be customized to your own site
@@ -47,7 +47,7 @@ module Spree
 
     def active_products
       scope = products.active
-      scope = scope.on_hand unless Spree::Config[:show_zero_stock_products]
+      scope = scope.on_hand unless Merriweather::Config[:show_zero_stock_products]
       scope
     end
 

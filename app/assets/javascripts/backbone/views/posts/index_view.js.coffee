@@ -1,6 +1,6 @@
-MusicStore.Views.Posts ||= {}
+Merriweather.Views.Posts ||= {}
 
-class MusicStore.Views.Posts.IndexView extends Backbone.View
+class Merriweather.Views.Posts.IndexView extends Backbone.View
   template: JST["backbone/templates/posts/index"]
 
   initialize: () ->
@@ -10,7 +10,7 @@ class MusicStore.Views.Posts.IndexView extends Backbone.View
     @options.posts.each(@addOne)
 
   addOne: (post) =>
-    view = new MusicStore.Views.Posts.PostView({model : post})
+    view = new Merriweather.Views.Posts.PostView({model : post})
     @$("tbody").append(view.render().el)
 
   render: =>

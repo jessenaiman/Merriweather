@@ -1,6 +1,6 @@
 require 'ostruct'
 
-module Spree
+module Merriweather
   class Shipment < ActiveRecord::Base
     belongs_to :order
     belongs_to :shipping_method
@@ -75,7 +75,7 @@ module Spree
     end
 
     def line_items
-      if order.complete? and Spree::Config[:track_inventory_levels]
+      if order.complete? and Merriweather::Config[:track_inventory_levels]
         order.line_items.select { |li| inventory_units.map(&:variant_id).include?(li.variant_id) }
       else
         order.line_items
@@ -125,10 +125,10 @@ module Spree
       end
 
       # Determines whether or not inventory units should be associated with the shipment.  This is always +false+ when
-      # +Spree::Config[:track_inventory_levels]+ is set to +false.+  Otherwise its +true+ whenever the order is completed
+      # +Merriweather::Config[:track_inventory_levels]+ is set to +false.+  Otherwise its +true+ whenever the order is completed
       # (and not canceled.)
       def require_inventory
-        return false unless Spree::Config[:track_inventory_levels]
+        return false unless Merriweather::Config[:track_inventory_levels]
         order.completed? && !order.canceled?
       end
 

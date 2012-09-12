@@ -1,4 +1,4 @@
-class MusicStore.Models.Song extends Backbone.Model
+class Merriweather.Models.Song extends Backbone.Model
   paramRoot: 'song'
 
   defaults:
@@ -6,6 +6,6 @@ class MusicStore.Models.Song extends Backbone.Model
     mp3: null
     ogg: null
 
-class MusicStore.Collections.SongsCollection extends Backbone.Collection
-  model: MusicStore.Models.Song
+class Merriweather.Collections.SongsCollection extends Backbone.Collection
+  model: Merriweather.Models.Song
   url: '/songs'

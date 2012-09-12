@@ -1,11 +1,11 @@
-module Spree
+module Merriweather
   class Taxonomy < ActiveRecord::Base
     validates :name, :presence => true
 
     attr_accessible :name
 
     has_many :taxons
-    has_one :root, :conditions => { :parent_id => nil }, :class_name => "Spree::Taxon",
+    has_one :root, :conditions => { :parent_id => nil }, :class_name => "Merriweather::Taxon",
                    :dependent => :destroy
 
     after_save :set_name

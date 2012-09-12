@@ -1,6 +1,6 @@
-MusicStore.Views.Albums ||= {}
+Merriweather.Views.Albums ||= {}
 
-class MusicStore.Views.Albums.AlbumView extends Backbone.View
+class Merriweather.Views.Albums.AlbumView extends Backbone.View
   template: JST["backbone/templates/albums/album"]
 
   events:

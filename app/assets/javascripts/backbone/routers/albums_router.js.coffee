@@ -1,9 +1,9 @@
-class MusicStore.Routers.AlbumsRouter extends Backbone.Router
+class Merriweather.Routers.AlbumsRouter extends Backbone.Router
   initialize: (options) ->
-    @albums = new MusicStore.Collections.AlbumsCollection()
+    @albums = new Merriweather.Collections.AlbumsCollection()
     @albums.reset options.albums
 
-    @genres = new MusicStore.Collections.GenresCollection()
+    @genres = new Merriweather.Collections.GenresCollection()
     @genres.reset options.genres
 
   routes:
@@ -14,24 +14,24 @@ class MusicStore.Routers.AlbumsRouter extends Backbone.Router
     ".*"        : "index"
 
   newAlbum: ->
-    @view = new MusicStore.Views.Albums.NewView(collection: @albums)
+    @view = new Merriweather.Views.Albums.NewView(collection: @albums)
     $("#albums").html(@view.render().el)
 
   index: ->
-    @view = new MusicStore.Views.Albums.IndexView(albums: @albums)
+    @view = new Merriweather.Views.Albums.IndexView(albums: @albums)
     $("#albums").html(@view.render().el)
-    @view = new MusicStore.Views.Genres.IndexView(genres: @genres)
+    @view = new Merriweather.Views.Genres.IndexView(genres: @genres)
     $("#genres").html(@view.render().el)
 
   show: (id) ->
     album = @albums.get(id)
 
-    @view = new MusicStore.Views.Albums.ShowView(model: album)
+    @view = new Merriweather.Views.Albums.ShowView(model: album)
     $("#albums").html(@view.render().el)
 
   edit: (id) ->
     album = @albums.get(id)
-    @view = new MusicStore.Views.Albums.EditView(model: album)
+    @view = new Merriweather.Views.Albums.EditView(model: album)
     $("#albums").html(@view.render().el)
-    @genres = new MusicStore.Views.Genres.IndexView(genres: @genres)
+    @genres = new Merriweather.Views.Genres.IndexView(genres: @genres)
     $("#genres").html(@view.render().el)

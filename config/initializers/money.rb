@@ -1,6 +1,6 @@
 # encoding : utf-8
 
-MoneyRails.configure do |config|
+#MoneyRails.configure do |config|
 
   # To set the default currency
   #
@@ -38,4 +38,4 @@ MoneyRails.configure do |config|
   #   :decimal_mark        => ","
   # }
 
-end
+#end

@@ -1,6 +1,6 @@
-MusicStore.Views.Genres ||= {}
+Merriweather.Views.Genres ||= {}
 
-class MusicStore.Views.Genres.ShowView extends Backbone.View
+class Merriweather.Views.Genres.ShowView extends Backbone.View
   template: JST["backbone/templates/genres/show"]
 
   render: ->

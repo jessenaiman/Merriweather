@@ -40,7 +40,7 @@
           = f.label :sku, t(:sku)
           %br/
           = f.text_field :sku, :size => 16
-        / - if Spree::Config[:track_inventory_levels]
+        / - if Merriweather::Config[:track_inventory_levels]
         /   = f.field_container :on_hand do
         /     = f.label :on_hand, t(:on_hand)
         /     %br/

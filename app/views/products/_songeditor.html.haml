@@ -1,5 +1,5 @@
 :javascript
 	$(function() {
-		window.router = new MusicStore.Routers.SongsRouter({songs: #{@songs.to_json.html_safe}});
+		window.router = new Merriweather.Routers.SongsRouter({songs: #{@songs.to_json.html_safe}});
 		Backbone.history.start();
 	})

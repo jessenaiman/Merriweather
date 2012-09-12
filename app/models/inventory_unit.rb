@@ -8,7 +8,7 @@ module Merriweather
     scope :shipped, lambda { where(:state => 'shipped') }
 
     def self.backorder
-      warn "[SPREE] Spree::InventoryUnit.backorder will be deprecated in Spree 1.3. Please use Spree::Product.backordered instead."
+      warn "[SPREE] Merriweather::InventoryUnit.backorder will be deprecated in Merriweather 1.3. Please use Merriweather::Product.backordered instead."
       backordered
     end
 
@@ -49,29 +49,29 @@ module Merriweather
       sold = quantity - back_order
 
       #set on_hand if configured
-      if Spree::Config[:track_inventory_levels]
+      if Merriweather::Config[:track_inventory_levels]
         variant.decrement!(:count_on_hand, quantity)
       end
 
       #create units if configured
-      if Spree::Config[:create_inventory_units]
+      if Merriweather::Config[:create_inventory_units]
         create_units(order, variant, sold, back_order)
       end
     end
 
     def self.decrease(order, variant, quantity)
-      if Spree::Config[:track_inventory_levels]
+      if Merriweather::Config[:track_inventory_levels]
         variant.increment!(:count_on_hand, quantity)
       end
 
-      if Spree::Config[:create_inventory_units]
+      if Merriweather::Config[:create_inventory_units]
         destroy_units(order, variant, quantity)
       end
     end
 
     private
       def allow_ship?
-        Spree::Config[:allow_backorder_shipping] || self.sold?
+        Merriweather::Config[:allow_backorder_shipping] || self.sold?
       end
 
       def self.determine_backorder(order, variant, quantity)
@@ -99,7 +99,7 @@ module Merriweather
       end
 
       def self.create_units(order, variant, sold, back_order)
-        return if back_order > 0 && !Spree::Config[:allow_backorders]
+        return if back_order > 0 && !Merriweather::Config[:allow_backorders]
 
         shipment = order.shipments.detect { |shipment| !shipment.shipped? }
 

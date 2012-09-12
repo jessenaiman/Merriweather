@@ -214,7 +214,7 @@ ERR! Please try running this command again as root/Administrator.
 ERR! 
 ERR! System Linux 3.5.0-8-generic
 ERR! command "node" "/usr/bin/npm" "install" "-g" "coffee-script"
-ERR! cwd /home/jesse/Dropbox/MusicStore
+ERR! cwd /home/jesse/Dropbox/Merriweather
 ERR! node -v v0.6.19
 ERR! npm -v 1.1.4
 ERR! path /usr/local/lib/node_modules

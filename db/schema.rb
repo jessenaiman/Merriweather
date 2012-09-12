@@ -11,7 +11,27 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120910174501) do
+ActiveRecord::Schema.define(:version => 20120911191421) do
+
+  create_table "addresses", :force => true do |t|
+    t.string   "firstname"
+    t.string   "lastname"
+    t.string   "address1"
+    t.string   "address2"
+    t.string   "city"
+    t.string   "zipcode"
+    t.string   "phone"
+    t.string   "state_name"
+    t.string   "alternative_phone"
+    t.string   "company"
+    t.integer  "state_id"
+    t.integer  "country_id"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
+
+  add_index "addresses", ["firstname"], :name => "index_addresses_on_firstname"
+  add_index "addresses", ["lastname"], :name => "index_addresses_on_lastname"
 
   create_table "artists", :force => true do |t|
     t.string   "name"
@@ -159,17 +179,19 @@ ActiveRecord::Schema.define(:version => 20120910174501) do
     t.string   "image"
     t.string   "content"
     t.string   "gemm"
-    t.string   "permalink"
-    t.string   "meta_description"
-    t.string   "meta_keywords"
-    t.date     "available_on"
-    t.datetime "deleted_at"
     t.integer  "band_id"
     t.integer  "genre_id"
     t.integer  "product_type_id"
+    t.datetime "available_on"
+    t.datetime "deleted_at"
+    t.string   "permalink"
+    t.string   "meta_description"
+    t.string   "meta_keywords"
+    t.integer  "tax_category_id"
     t.integer  "shipping_category_id"
-    t.datetime "created_at",           :null => false
-    t.datetime "updated_at",           :null => false
+    t.integer  "count_on_hand",        :default => 0, :null => false
+    t.datetime "created_at",                          :null => false
+    t.datetime "updated_at",                          :null => false
   end
 
   add_index "products", ["available_on"], :name => "index_products_on_available_on"
@@ -256,6 +278,23 @@ ActiveRecord::Schema.define(:version => 20120910174501) do
 
   add_index "songs", ["product_id"], :name => "index_songs_on_product_id"
 
+  create_table "state_changes", :force => true do |t|
+    t.string   "name"
+    t.string   "previous_state"
+    t.integer  "stateful_id"
+    t.integer  "user_id"
+    t.string   "stateful_type"
+    t.string   "next_state"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
+  create_table "states", :force => true do |t|
+    t.string  "name"
+    t.string  "abbr"
+    t.integer "country_id"
+  end
+
   create_table "stores", :force => true do |t|
     t.string   "name"
     t.string   "address"
@@ -319,7 +358,9 @@ ActiveRecord::Schema.define(:version => 20120910174501) do
     t.integer "role_id"
   end
 
+  add_index "users_roles", ["role_id"], :name => "index_users_roles_on_role_id"
   add_index "users_roles", ["user_id", "role_id"], :name => "index_users_roles_on_user_id_and_role_id"
+  add_index "users_roles", ["user_id"], :name => "index_users_roles_on_user_id"
 
   create_table "variants", :force => true do |t|
     t.string   "sku",                                         :default => "",    :null => false
@@ -347,5 +388,22 @@ ActiveRecord::Schema.define(:version => 20120910174501) do
   end
 
   add_index "videos", ["product_id"], :name => "index_videos_on_product_id"
+
+  create_table "zone_members", :force => true do |t|
+    t.integer  "zoneable_id"
+    t.string   "zoneable_type"
+    t.integer  "zone_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  create_table "zones", :force => true do |t|
+    t.string   "name"
+    t.string   "description"
+    t.boolean  "default_tax",        :default => false
+    t.integer  "zone_members_count", :default => 0
+    t.datetime "created_at",                            :null => false
+    t.datetime "updated_at",                            :null => false
+  end
 
 end

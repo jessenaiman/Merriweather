@@ -1,4 +1,4 @@
-class MusicStore.Models.Album extends Backbone.Model
+class Merriweather.Models.Album extends Backbone.Model
   paramRoot: 'album'
 
   defaults:
@@ -11,6 +11,6 @@ class MusicStore.Models.Album extends Backbone.Model
     genre_id: null
     heading: null
 
-class MusicStore.Collections.AlbumsCollection extends Backbone.Collection
-  model: MusicStore.Models.Album
+class Merriweather.Collections.AlbumsCollection extends Backbone.Collection
+  model: Merriweather.Models.Album
   url: '/albums'

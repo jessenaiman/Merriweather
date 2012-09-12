@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-MusicStore::Application.load_tasks
+Merriweather::Application.load_tasks

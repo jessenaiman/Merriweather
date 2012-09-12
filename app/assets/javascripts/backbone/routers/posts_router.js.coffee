@@ -1,6 +1,6 @@
-class MusicStore.Routers.PostsRouter extends Backbone.Router
+class Merriweather.Routers.PostsRouter extends Backbone.Router
   initialize: (options) ->
-    @posts = new MusicStore.Collections.PostsCollection()
+    @posts = new Merriweather.Collections.PostsCollection()
     @posts.reset options.posts
 
   routes:
@@ -11,21 +11,21 @@ class MusicStore.Routers.PostsRouter extends Backbone.Router
     ".*"        : "index"
 
   newPost: ->
-    @view = new MusicStore.Views.Posts.NewView(collection: @posts)
+    @view = new Merriweather.Views.Posts.NewView(collection: @posts)
     $("#posts").html(@view.render().el)
 
   index: ->
-    @view = new MusicStore.Views.Posts.IndexView(posts: @posts)
+    @view = new Merriweather.Views.Posts.IndexView(posts: @posts)
     $("#posts").html(@view.render().el)
 
   show: (id) ->
     post = @posts.get(id)
 
-    @view = new MusicStore.Views.Posts.ShowView(model: post)
+    @view = new Merriweather.Views.Posts.ShowView(model: post)
     $("#posts").html(@view.render().el)
 
   edit: (id) ->
     post = @posts.get(id)
 
-    @view = new MusicStore.Views.Posts.EditView(model: post)
+    @view = new Merriweather.Views.Posts.EditView(model: post)
     $("#posts").html(@view.render().el)

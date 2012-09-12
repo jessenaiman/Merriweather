@@ -1,6 +1,6 @@
-MusicStore.Views.Genres ||= {}
+Merriweather.Views.Genres ||= {}
 
-class MusicStore.Views.Genres.IndexView extends Backbone.View
+class Merriweather.Views.Genres.IndexView extends Backbone.View
   template: JST["backbone/templates/genres/index"]
 
   initialize: () ->
@@ -10,7 +10,7 @@ class MusicStore.Views.Genres.IndexView extends Backbone.View
     @options.genres.each(@addOne)
 
   addOne: (genre) =>
-    view = new MusicStore.Views.Genres.GenreView({model : genre})
+    view = new Merriweather.Views.Genres.GenreView({model : genre})
     @$(".genres tbody").append(view.render().el)
 
   render: =>

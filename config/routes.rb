@@ -1,4 +1,4 @@
-MusicStore::Application.routes.draw do
+Merriweather::Application.routes.draw do
   resources :product_types
 
   resources :videos

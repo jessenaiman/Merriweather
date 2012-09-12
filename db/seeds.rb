@@ -43,6 +43,7 @@ kathy = Artist.create! :name=> "Kathy Reid-Naiman", :content => '<p>
 
 kathy_band = Band.create! :name=>'Kathy Reid-Naiman', :self_titled=>true
 
+puts 'artist created'
 
 
 Post.create! :title => 'Here we go', :content => '<p>
@@ -57,6 +58,8 @@ Post.create! :title => 'Here we go', :content => '<p>
 	<a href="http://merriweather.ca/artist.aspx?ID=1">Kathy Reid-Naiman </a>&nbsp;and &nbsp;<a href="http://merriweather.ca/artist.aspx?ID=26">Hannah Naiman</a></p>
 <p>
 	Here We Go Zodeo by veteran children&rsquo;s musician Kathy Reid-Naiman and her daughter Hannah Naiman is a delightful collection of singing games and dances for children of all ages. The tracks are full dance length so they can be easily used in the classroom when a live musician is not available. Many of these are traditional games that were sung without any musical accompaniment so once the song is learned they can be danced anywhere, anytime!</p>'
+
+puts 'post created'
 
 tickles = Product.create! :name=>'Tickles and Tunes', :band_id => kathy_band.id, :content => "A wonderful collection of songs, tickles, knee bounces, and singing games, for the very young child, particularly those aged 6 months to 6 years old. It was produced by Ken Whiteley, the same man who produced Raffi, Fred Penner, and many, many other great children's recording artists. Kathy plays Appalachian Dulcimer, Guitar, Banjo, Fiddle and Autoharp, and Ken accompanies her on 20 other instruments.", :gemm => "M9701CD", :band_id => 1, :genre_id => 1, :product_type_id => album.id
 

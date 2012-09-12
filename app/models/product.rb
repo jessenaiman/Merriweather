@@ -10,22 +10,22 @@ class Product < ActiveRecord::Base
   belongs_to :shipping_category
 
   has_one :master,
-    :class_name => 'Spree::Variant',
+    :class_name => 'Merriweather::Variant',
     :conditions => { :is_master => true },
     :dependent => :destroy
 
   has_many :variants,
-    :class_name => 'Spree::Variant',
+    :class_name => 'Merriweather::Variant',
     :conditions => { :is_master => false, :deleted_at => nil },
     :order => :position
 
   has_many :variants_including_master,
-    :class_name => 'Spree::Variant',
+    :class_name => 'Merriweather::Variant',
     :conditions => { :deleted_at => nil },
     :dependent => :destroy
 
-  delegate_belongs_to :master, :sku, :price, :weight, :height, :width, :depth, :is_master
-  delegate_belongs_to :master, :cost_price if Variant.table_exists? && Variant.column_names.include?('cost_price')
+  delegate_attributes_to :master, :sku, :price, :weight, :height, :width, :depth, :is_master
+  delegate_attributes_to :master, :cost_price if Variant.table_exists? && Variant.column_names.include?('cost_price')
 
   after_create :set_master_variant_defaults
   after_create :add_properties_and_option_types_from_prototype
@@ -73,7 +73,7 @@ class Product < ActiveRecord::Base
   after_initialize :ensure_master
 
   def variants_with_only_master
-    ActiveSupport::Deprecation.warn("[SPREE] Spree::Product#variants_with_only_master will be deprecated in Spree 1.3. Please use Spree::Product#master instead.")
+    ActiveSupport::Deprecation.warn("[SPREE] Merriweather::Product#variants_with_only_master will be deprecated in Merriweather 1.3. Please use Merriweather::Product#master instead.")
     master
   end
 
@@ -94,7 +94,7 @@ class Product < ActiveRecord::Base
 
   # adjusts the "on_hand" inventory level for the product up or down to match the given new_level
   def on_hand=(new_level)
-    raise 'cannot set on_hand of product with variants' if has_variants? && Spree::Config[:track_inventory_levels]
+    raise 'cannot set on_hand of product with variants' if has_variants? && Merriweather::Config[:track_inventory_levels]
     master.on_hand = new_level
   end
 
@@ -205,7 +205,7 @@ class Product < ActiveRecord::Base
   end
 
   def display_price
-    Spree::Money.new(price).to_s
+    Merriweather::Money.new(price).to_s
   end
 
   private
@@ -223,7 +223,7 @@ class Product < ActiveRecord::Base
     end
 
     def add_properties_and_option_types_from_prototype
-      if prototype_id && prototype = Spree::Prototype.find_by_id(prototype_id)
+      if prototype_id && prototype = Merriweather::Prototype.find_by_id(prototype_id)
         prototype.properties.each do |property|
           product_properties.create({:property => property}, :without_protection => true)
         end
@@ -240,7 +240,7 @@ class Product < ActiveRecord::Base
     # the master on_hand is meaningless once a product has variants as the inventory
     # units are now "contained" within the product variants
     def set_master_on_hand_to_zero_when_product_has_variants
-      master.on_hand = 0 if has_variants? && Spree::Config[:track_inventory_levels]
+      master.on_hand = 0 if has_variants? && Merriweather::Config[:track_inventory_levels]
     end
 
     # ensures the master variant is flagged as such
@@ -258,7 +258,6 @@ class Product < ActiveRecord::Base
       return unless new_record?
       self.master ||= Variant.new
     end
-  end
  
 end
 

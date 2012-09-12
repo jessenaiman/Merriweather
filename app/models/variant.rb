@@ -29,12 +29,12 @@ module Merriweather
 
     # Returns number of inventory units for this variant (new records haven't been saved to database, yet)
     def on_hand
-      Spree::Config[:track_inventory_levels] ? count_on_hand : (1.0 / 0) # Infinity
+      Merriweather::Config[:track_inventory_levels] ? count_on_hand : (1.0 / 0) # Infinity
     end
 
     # Adjusts the inventory units to match the given new level.
     def on_hand=(new_level)
-      if Spree::Config[:track_inventory_levels]
+      if Merriweather::Config[:track_inventory_levels]
         new_level = new_level.to_i
 
         # increase Inventory when
@@ -47,7 +47,7 @@ module Merriweather
 
         self.count_on_hand = new_level
       else
-        raise 'Cannot set on_hand value when Spree::Config[:track_inventory_levels] is false'
+        raise 'Cannot set on_hand value when Merriweather::Config[:track_inventory_levels] is false'
       end
     end
 
@@ -66,13 +66,13 @@ module Merriweather
 
     # returns true if at least one inventory unit of this variant is "on_hand"
     def in_stock?
-      Spree::Config[:track_inventory_levels] ? on_hand > 0 : true
+      Merriweather::Config[:track_inventory_levels] ? on_hand > 0 : true
     end
     alias in_stock in_stock?
 
     # returns true if this variant is allowed to be placed on a new order
     def available?
-      Spree::Config[:track_inventory_levels] ? (Spree::Config[:allow_backorders] || in_stock?) : true
+      Merriweather::Config[:track_inventory_levels] ? (Merriweather::Config[:allow_backorders] || in_stock?) : true
     end
 
     def options_text
@@ -100,7 +100,7 @@ module Merriweather
       # no option values on master
       return if self.is_master
 
-      option_type = Spree::OptionType.where(:name => opt_name).first_or_initialize do |o|
+      option_type = Merriweather::OptionType.where(:name => opt_name).first_or_initialize do |o|
         o.presentation = opt_name
         o.save!
       end
@@ -118,7 +118,7 @@ module Merriweather
         end
       end
 
-      option_value = Spree::OptionValue.where(:option_type_id => option_type.id, :name => opt_value).first_or_initialize do |o|
+      option_value = Merriweather::OptionValue.where(:option_type_id => option_type.id, :name => opt_value).first_or_initialize do |o|
         o.presentation = opt_value
         o.save!
       end
@@ -156,7 +156,7 @@ module Merriweather
 
       def recalculate_product_on_hand
         on_hand = product.on_hand
-        if Spree::Config[:track_inventory_levels] && on_hand != (1.0 / 0) # Infinity
+        if Merriweather::Config[:track_inventory_levels] && on_hand != (1.0 / 0) # Infinity
           product.update_column(:count_on_hand, on_hand)
         end
       end
