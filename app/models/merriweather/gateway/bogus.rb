@@ -1,4 +1,4 @@
-#module Merriweather
+module Merriweather
   class Gateway::Bogus < Gateway
     TEST_VISA = '4111111111111111'
     TEST_MC   = '5500000000000004'
@@ -82,4 +82,4 @@
         random
       end
   end
-#end
+end

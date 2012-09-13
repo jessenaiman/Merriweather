@@ -1,5 +1,5 @@
-##module Merriweather
+module Merriweather
   class Configuration < ActiveRecord::Base
 
   end
-#end
+end

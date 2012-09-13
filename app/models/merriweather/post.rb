@@ -1,3 +1,5 @@
-class Post < ActiveRecord::Base
-  attr_accessible :content, :title
+module Merriweather
+	class Post < ActiveRecord::Base
+  	attr_accessible :content, :title
+	end
 end

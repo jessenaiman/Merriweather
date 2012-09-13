@@ -1,4 +1,4 @@
-#module Merriweather
+module Merriweather
   class PaymentMethod::Check < PaymentMethod
     def actions
       %w{capture void}
@@ -26,4 +26,4 @@
       false
     end
   end
-#end
+end

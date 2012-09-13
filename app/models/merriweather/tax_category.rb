@@ -1,4 +1,4 @@
-#module Merriweather
+module Merriweather
   class TaxCategory < ActiveRecord::Base
     validates :name, :presence => true, :uniqueness => { :scope => :deleted_at }
 
@@ -23,4 +23,4 @@
       save
     end
   end
-#end
+end

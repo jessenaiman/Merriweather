@@ -9,4 +9,5 @@ ENGINE_PATH = File.expand_path('../../lib/merriweather/core/engine', __FILE__)
 require File.expand_path('../../config/boot',  __FILE__)
 
 require 'rails/all'
+require 'rails/engine/commands'
 require 'rails/commands'

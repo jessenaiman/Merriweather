@@ -1,6 +1,6 @@
 require_dependency 'merriweather/calculator'
 
-#module Merriweather
+module Merriweather
   class Calculator::FlatPercentItemTotal < Calculator
     preference :flat_percent, :decimal, :default => 0
 
@@ -17,4 +17,4 @@ require_dependency 'merriweather/calculator'
       (value * 100).round.to_f / 100
     end
   end
-#end
+end

@@ -6,7 +6,7 @@
 
 require 'singleton'
 
-module Preferences
+module Merriweather::Preferences
 
   class StoreInstance
     attr_accessor :persistence

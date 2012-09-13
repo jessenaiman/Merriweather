@@ -1,4 +1,4 @@
-##module Merriweather
+module Merriweather
   class Activator < ActiveRecord::Base
     cattr_accessor :event_names
 
@@ -26,4 +26,4 @@
       expires_at && Time.now > expires_at
     end
   end
-#end
+end

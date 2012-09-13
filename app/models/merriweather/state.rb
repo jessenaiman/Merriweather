@@ -1,4 +1,4 @@
-##module Merriweather
+module Merriweather
   class State < ActiveRecord::Base
     belongs_to :country
 
@@ -28,4 +28,4 @@
       name
     end
   end
-#end
+end

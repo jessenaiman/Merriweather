@@ -1,4 +1,4 @@
-##module Merriweather
+module Merriweather
   class Gateway < PaymentMethod
     delegate_belongs_to :provider, :authorize, :purchase, :capture, :void, :credit
 
@@ -49,4 +49,4 @@
       'gateway'
     end
   end
-#end
+end

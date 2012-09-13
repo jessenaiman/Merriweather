@@ -1,4 +1,4 @@
-#module Merriweather
+module Merriweather
   class Order < ActiveRecord::Base
     module Checkout
       def self.included(klass)
@@ -135,4 +135,4 @@
       end
     end
   end
-#end
+end

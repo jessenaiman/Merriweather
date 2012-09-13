@@ -1,4 +1,4 @@
-module Preferences
+module Merriweather::Preferences
   module PreferableClassMethods
 
     def preference(name, type, *args)

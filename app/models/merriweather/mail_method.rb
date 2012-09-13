@@ -1,4 +1,4 @@
-##module Merriweather
+module Merriweather
   class MailMethod < ActiveRecord::Base
 
     MAIL_AUTH = ['none', 'plain', 'login', 'cram_md5']
@@ -29,4 +29,4 @@
       where(:environment => Rails.env).first
     end
   end
-#end
+end

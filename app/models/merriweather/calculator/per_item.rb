@@ -1,6 +1,6 @@
 require_dependency 'merriweather/calculator'
 
-#module Merriweather
+module Merriweather
   class Calculator::PerItem < Calculator
     preference :amount, :decimal, :default => 0
 
@@ -37,4 +37,4 @@ require_dependency 'merriweather/calculator'
       end
     end
   end
-#end
+end

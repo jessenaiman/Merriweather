@@ -1,5 +1,5 @@
 require 'merriweather/core/validators/email'
-require 'order/checkout'
+require 'merriweather/order/checkout'
 
 #module Merriweather
   class Order < ActiveRecord::Base
@@ -11,7 +11,7 @@ require 'order/checkout'
     #
     # rather than the qualified name. This will most likely be fixed with the
     # 1.3 release.
-    include Order::Checkout
+    include Merriweather::Order::Checkout
     checkout_flow do
       go_to_state :address
       go_to_state :delivery

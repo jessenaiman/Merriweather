@@ -1,4 +1,4 @@
-#module Merriweather
+module Merriweather
   class StateChange < ActiveRecord::Base
     belongs_to :user
     belongs_to :stateful, :polymorphic => true
@@ -12,4 +12,4 @@
       true   # don't stop the filters
     end
   end
-#end
+end

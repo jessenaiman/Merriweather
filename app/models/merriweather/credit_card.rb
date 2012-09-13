@@ -1,4 +1,4 @@
-##module Merriweather
+module Merriweather
   class CreditCard < ActiveRecord::Base
     has_many :payments
 
@@ -100,4 +100,4 @@
       cc_type
     end
   end
-#end
+end

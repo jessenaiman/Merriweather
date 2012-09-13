@@ -1,4 +1,4 @@
-#module Merriweather
+module Merriweather
   class Tracker < ActiveRecord::Base
     attr_accessible :analytics_id, :environment, :active
 
@@ -7,4 +7,4 @@
       tracker.analytics_id.present? ? tracker : nil if tracker
     end
   end
-#end
+end

@@ -1,4 +1,4 @@
-##module Merriweather
+module Merriweather
   class Calculator < ActiveRecord::Base
     belongs_to :calculable, :polymorphic => true
 
@@ -36,4 +36,4 @@
       true
     end
   end
-#end
+end

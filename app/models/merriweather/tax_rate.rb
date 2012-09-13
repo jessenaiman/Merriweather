@@ -1,4 +1,4 @@
-#module Merriweather
+module Merriweather
   class DefaultTaxZoneValidator < ActiveModel::Validator
     def validate(record)
       if record.included_in_price
@@ -8,7 +8,7 @@
   end
 end
 
-#module Merriweather
+module Merriweather
   class TaxRate < ActiveRecord::Base
     belongs_to :zone, :class_name => "Merriweather::Zone"
     belongs_to :tax_category, :class_name => "Merriweather::TaxCategory"
@@ -76,4 +76,4 @@ end
         "#{tax_category.name} #{amount * 100}%"
       end
   end
-#end
+end

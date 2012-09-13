@@ -1,4 +1,4 @@
-#module Merriweather
+module Merriweather
   class Zone < ActiveRecord::Base
     has_many :zone_members, :dependent => :destroy
     has_many :tax_rates, :dependent => :destroy
@@ -112,4 +112,4 @@
         end
       end
   end
-#end
+end

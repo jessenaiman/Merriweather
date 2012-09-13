@@ -1,4 +1,4 @@
-##module Merriweather
+module Merriweather
   class ShippingRate < Struct.new(:id, :shipping_method, :name, :cost)
     def initialize(attributes = {})
       attributes.each do |k, v|
@@ -16,4 +16,4 @@
       Merriweather::Money.new(price)
     end
   end
-#end
+end

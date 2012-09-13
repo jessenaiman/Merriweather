@@ -20,6 +20,7 @@
 #  adjustments count towards the order's adjustment total. This allows an adjustment to be preserved if it
 #  becomes ineligible so it might be reinstated.
 #
+module Merriweather
   class Adjustment < ActiveRecord::Base
     attr_accessible :amount, :label
 
@@ -105,3 +106,4 @@
       end
 
   end
+end

@@ -1,4 +1,4 @@
-##module Merriweather
+module Merriweather
   class Payment < ActiveRecord::Base
     include Merriweather::Payment::Processing
     belongs_to :order
@@ -101,4 +101,4 @@
         order.update!
       end
   end
-#end
+end

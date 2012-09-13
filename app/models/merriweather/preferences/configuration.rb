@@ -20,9 +20,9 @@
 # a.preferred_color
 #
 #
-#module Merriweather::Preferences
+module Merriweather::Preferences
   class Configuration
-    include Preferences::Preferable
+    include Merriweather::Preferences::Preferable
 
     def configure
       yield(self) if block_given?
@@ -68,4 +68,4 @@
     end
 
   end
-#end
+end

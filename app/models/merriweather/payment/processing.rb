@@ -1,4 +1,4 @@
-#module Merriweather
+module Merriweather
   class Payment < ActiveRecord::Base
     module Processing
       def process!

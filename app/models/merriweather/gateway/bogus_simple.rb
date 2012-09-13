@@ -1,5 +1,5 @@
 # Bogus Gateway that doesn't support payment profiles
-#module Merriweather
+module Merriweather
   class Gateway::BogusSimple < Gateway::Bogus
 
     def payment_profiles_supported?
@@ -23,4 +23,4 @@
     end
 
   end
-#end
+end

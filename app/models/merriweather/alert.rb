@@ -1,4 +1,4 @@
-##module Merriweather
+module Merriweather
   class Alert < ActiveResource::Base
     self.site = 'http://alerts.merriweathercommerce.com/'
     self.format = :json
@@ -11,4 +11,4 @@
                               :rails_version => Rails.version })
     end
   end
-#end
+end

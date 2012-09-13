@@ -1,6 +1,6 @@
 require_dependency 'merriweather/calculator'
 
-#module Merriweather
+module Merriweather
   class Calculator::PriceSack < Calculator
     preference :minimal_amount, :decimal, :default => 0
     preference :normal_amount, :decimal, :default => 0
@@ -29,4 +29,4 @@ require_dependency 'merriweather/calculator'
       end
     end
   end
-#end
+end

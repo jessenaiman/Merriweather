@@ -1,4 +1,4 @@
-##module Merriweather
+module Merriweather
   class ReturnAuthorization < ActiveRecord::Base
     belongs_to :order
 
@@ -82,4 +82,4 @@
         self.amount = amount.abs
       end
   end
-#end
+end

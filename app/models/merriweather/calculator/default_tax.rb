@@ -1,6 +1,6 @@
 require_dependency 'merriweather/calculator'
 
-#module Merriweather
+module Merriweather
   class Calculator::DefaultTax < Calculator
     def self.description
       I18n.t(:default_tax)
@@ -48,4 +48,4 @@ require_dependency 'merriweather/calculator'
       end
 
   end
-#end
+end

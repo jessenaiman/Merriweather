@@ -1,4 +1,4 @@
-#module Merriweather
+module Merriweather
   class ZoneMember < ActiveRecord::Base
     belongs_to :zone, :counter_cache => true
     belongs_to :zoneable, :polymorphic => true
@@ -10,4 +10,4 @@
       zoneable.name
     end
   end
-#end
+end

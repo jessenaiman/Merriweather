@@ -6,18 +6,18 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 # rake db:drop && rake db:create && rake db:migrate && rake db:seed
-Genre.create! :name => "Children's Music", :abbr => "kids"
-Genre.create! :name => "Old Time", :abbr => "geezer"
+Merriweather::Genre.create! :name => "Children's Music", :abbr => "kids"
+Merriweather::Genre.create! :name => "Old Time", :abbr => "geezer"
 
-album = ProductType.create! :name => 'album', :price => 20.00
-video = ProductType.create! :name => 'video', :price => 25.00
-book = ProductType.create! :name => 'book', :price => 15.00
+album = Merriweather::ProductType.create! :name => 'album', :price => 20.00
+video = Merriweather::ProductType.create! :name => 'video', :price => 25.00
+book = Merriweather::ProductType.create! :name => 'book', :price => 15.00
 
 user = User.create! :name => 'admin', :email => 'jessenaiman@gmail.com', :password => 'abc123', :password_confirmation => 'abc123'
 puts 'New user created: ' << user.name
 user.add_role :admin
 
-kathy = Artist.create! :name=> "Kathy Reid-Naiman", :content => '<p>
+kathy = Merriweather::Artist.create! :name=> "Kathy Reid-Naiman", :content => '<p>
 	Kathy Reid-Naiman is a full time children&#39;s performer, and a member of <a href="http://www.mits.on.ca/">Mariposa in the Schools</a>, an organization dedicated to bringing quality musical experiences to school children in Ontario. She is also a member of the <a href="http://www.cmnonline.org/">Children&#39;s Music Network</a>. Her children&#39;s recordings; Tickles &amp; Tunes, More Tickles &amp; Tunes, Say Hello to the Morning, A Smooth Road to London Town, On My Way to Dreamland and Reaching For the Stars!&nbsp;have become very popular with pre-school teachers and families with toddler&#39;s &amp; young children. She has been teaching classes for young children 6 months to 6 years old and their caregivers since 1982 in libraries in Ontario. She is currently running classes in&nbsp;<a href="http://www.library.aurora.on.ca/page/children/programs/preschoolers"> Aurora,</a>&nbsp; and&nbsp; <a href="http://www.uxlib.com/modules/kid_teen/kids/kprog.html">Uxbridge</a>.</p>
 <br />
 <p>
@@ -41,12 +41,12 @@ kathy = Artist.create! :name=> "Kathy Reid-Naiman", :content => '<p>
 <p>
 	Visit Kathy&#39;s <a href="http://www.merriweather.ca/Template.aspx?ID=62">Workshop</a> page</p>'
 
-kathy_band = Band.create! :name=>'Kathy Reid-Naiman', :self_titled=>true
+kathy_band = Merriweather::Band.create! :name=>'Kathy Reid-Naiman', :self_titled=>true
 
 puts 'artist created'
 
 
-Post.create! :title => 'Here we go', :content => '<p>
+Merriweather::Post.create! :title => 'Here we go', :content => '<p>
 	It&rsquo;s here!</p>
 <p>
 	<a href="http://merriweather.ca/albums.aspx?ID=55">Here We Go Zodeo</a></p>
@@ -61,9 +61,9 @@ Post.create! :title => 'Here we go', :content => '<p>
 
 puts 'post created'
 
-tickles = Product.create! :name=>'Tickles and Tunes', :band_id => kathy_band.id, :content => "A wonderful collection of songs, tickles, knee bounces, and singing games, for the very young child, particularly those aged 6 months to 6 years old. It was produced by Ken Whiteley, the same man who produced Raffi, Fred Penner, and many, many other great children's recording artists. Kathy plays Appalachian Dulcimer, Guitar, Banjo, Fiddle and Autoharp, and Ken accompanies her on 20 other instruments.", :gemm => "M9701CD", :band_id => 1, :genre_id => 1, :product_type_id => album.id
+tickles = Merriweather::Product.create! :name=>'Tickles and Tunes', :band_id => kathy_band.id, :content => "A wonderful collection of songs, tickles, knee bounces, and singing games, for the very young child, particularly those aged 6 months to 6 years old. It was produced by Ken Whiteley, the same man who produced Raffi, Fred Penner, and many, many other great children's recording artists. Kathy plays Appalachian Dulcimer, Guitar, Banjo, Fiddle and Autoharp, and Ken accompanies her on 20 other instruments.", :gemm => "M9701CD", :band_id => 1, :genre_id => 1, :product_type_id => album.id
 
 puts 'Starting songs seed'
-song1 = Song.create! :name=>'Don_Valley_Ramble', :mp3 => '/uploads/song/mp3/1/5_Strings_Attached_With_No_Backing-Don_Valley_Ramble.mp3', :product_id => tickles.id
-song2 = Song.create! :name=>'Paquet_d_epingles', :mp3 => '/uploads/song/mp3/2/_-_Paquet_d_epingles.mp3', :product_id => tickles.id
-song3 = Song.create! :name=>'Elkorn_Ridge.mp3', :mp3 => '/uploads/song/mp3/3/5_Strings_Attached_With_No_Backing-Elkorn_Ridge.mp3', :product_id => tickles.id
+song1 = Merriweather::Song.create! :name=>'Don_Valley_Ramble', :mp3 => '/uploads/song/mp3/1/5_Strings_Attached_With_No_Backing-Don_Valley_Ramble.mp3', :product_id => tickles.id
+song2 = Merriweather::Song.create! :name=>'Paquet_d_epingles', :mp3 => '/uploads/song/mp3/2/_-_Paquet_d_epingles.mp3', :product_id => tickles.id
+song3 = Merriweather::Song.create! :name=>'Elkorn_Ridge.mp3', :mp3 => '/uploads/song/mp3/3/5_Strings_Attached_With_No_Backing-Elkorn_Ridge.mp3', :product_id => tickles.id

@@ -1,4 +1,4 @@
-#module Merriweather
+module Merriweather
   class Country < ActiveRecord::Base
     has_many :states, :order => "name ASC"
 
@@ -12,4 +12,4 @@
       name
     end
   end
-#end
+end

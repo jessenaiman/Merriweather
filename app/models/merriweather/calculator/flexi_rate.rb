@@ -1,6 +1,6 @@
 require_dependency 'merriweather/calculator'
 
-#module Merriweather
+module Merriweather
   class Calculator::FlexiRate < Calculator
     preference :first_item,      :decimal, :default => 0.0
     preference :additional_item, :decimal, :default => 0.0
@@ -32,4 +32,4 @@ require_dependency 'merriweather/calculator'
       sum
     end
   end
-#end
+end

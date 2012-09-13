@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120911191421) do
+ActiveRecord::Schema.define(:version => 20120913030230) do
 
   create_table "addresses", :force => true do |t|
     t.string   "firstname"
@@ -119,6 +119,13 @@ ActiveRecord::Schema.define(:version => 20120911191421) do
     t.datetime "updated_at",  :null => false
   end
 
+  create_table "mail_methods", :force => true do |t|
+    t.string   "environment"
+    t.boolean  "active",      :default => true
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+  end
+
   create_table "option_types", :force => true do |t|
     t.string   "name",         :limit => 100
     t.string   "presentation", :limit => 100
@@ -155,6 +162,19 @@ ActiveRecord::Schema.define(:version => 20120911191421) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "preferences", :force => true do |t|
+    t.string   "name",       :limit => 100
+    t.integer  "owner_id"
+    t.string   "owner_type"
+    t.text     "value"
+    t.string   "key"
+    t.string   "value_type"
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+  end
+
+  add_index "preferences", ["key"], :name => "index_preferences_on_key", :unique => true
 
   create_table "product_properties", :force => true do |t|
     t.string   "value"

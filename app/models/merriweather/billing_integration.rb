@@ -1,4 +1,4 @@
-##module Merriweather
+module Merriweather
   class BillingIntegration < PaymentMethod
     validates :name, :presence => true
 
@@ -21,4 +21,4 @@
       options_hash
     end
   end
-#end
+end
