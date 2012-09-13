@@ -13,7 +13,7 @@ module Merriweather
           helper_method :title=
           helper_method :accurate_title
           helper_method :current_order
-          helper_method :try_spree_current_user
+          helper_method :try_merriweather_current_user
 
           before_filter :set_user_language
           before_filter :set_current_order
@@ -29,10 +29,10 @@ module Merriweather
       # e.g. <% title = 'This is a custom title for this view' %>
       attr_writer :title
 
-      # proxy method to *possible* spree_current_user method
-      # Authentication extensions (such as spree_auth_devise) are meant to provide spree_current_user
-      def try_spree_current_user
-        respond_to?(:spree_current_user) ? spree_current_user : nil
+      # proxy method to *possible* merriweather_current_user method
+      # Authentication extensions (such as merriweather_auth_devise) are meant to provide merriweather_current_user
+      def try_merriweather_current_user
+        respond_to?(:merriweather_current_user) ? merriweather_current_user : nil
       end
 
       def title
@@ -49,28 +49,28 @@ module Merriweather
       end
 
       def associate_user
-        if try_spree_current_user && @order
+        if try_merriweather_current_user && @order
           if @order.user.blank? || @order.email.blank?
-            @order.associate_user!(try_spree_current_user)
+            @order.associate_user!(try_merriweather_current_user)
           end
         end
 
         # This will trigger any "first order" promotions to be triggered
         # Assuming of course that this session variable was set correctly in
         # the authentication provider's registrations controller
-        if session[:spree_user_signup]
-          fire_event('spree.user.signup', :user => try_spree_current_user, :order => current_order(true))
+        if session[:merriweather_user_signup]
+          fire_event('merriweather.user.signup', :user => try_merriweather_current_user, :order => current_order(true))
         end
 
         session[:guest_token] = nil
-        session[:spree_user_signup] = nil
+        session[:merriweather_user_signup] = nil
       end
 
       protected
 
       def set_current_order
-        if user = try_spree_current_user
-          last_incomplete_order = user.last_incomplete_spree_order
+        if user = try_merriweather_current_user
+          last_incomplete_order = user.last_incomplete_merriweather_order
           if session[:order_id].nil? && last_incomplete_order
             session[:order_id] = last_incomplete_order.id
           elsif current_order && last_incomplete_order && current_order != last_incomplete_order
@@ -81,12 +81,12 @@ module Merriweather
 
       # Needs to be overriden so that we use Merriweather's Ability rather than anyone else's.
       def current_ability
-        @current_ability ||= Merriweather::Ability.new(try_spree_current_user)
+        @current_ability ||= Merriweather::Ability.new(try_merriweather_current_user)
       end
 
       def store_location
         # disallow return to login, logout, signup pages
-        authentication_routes = [:spree_signup_path, :spree_login_path, :spree_logout_path]
+        authentication_routes = [:merriweather_signup_path, :merriweather_login_path, :merriweather_logout_path]
         disallowed_urls = []
         authentication_routes.each do |route|
           if respond_to?(route)
@@ -105,12 +105,12 @@ module Merriweather
       def unauthorized
         respond_to do |format|
           format.html do
-            if try_spree_current_user
+            if try_merriweather_current_user
               flash.now[:error] = t(:authorization_failure)
-              render 'spree/shared/unauthorized', :layout => Merriweather::Config[:layout], :status => 401
+              render 'merriweather/shared/unauthorized', :layout => Merriweather::Config[:layout], :status => 401
             else
               store_location
-              url = respond_to?(:spree_login_path) ? spree_login_path : root_path
+              url = respond_to?(:merriweather_login_path) ? merriweather_login_path : root_path
               redirect_to url
             end
           end
@@ -149,7 +149,7 @@ module Merriweather
       # add additional keys as appropriate. Override this method if you need additional data when
       # responding to a notification
       def default_notification_payload
-        {:user => try_spree_current_user, :order => current_order}
+        {:user => try_merriweather_current_user, :order => current_order}
       end
 
       private
@@ -172,7 +172,7 @@ module Merriweather
       # 
       # You can set the layout you want to render inside your Merriweather configuration with the +:layout+ option.
       # 
-      # Default layout is: +app/views/spree/layouts/spree_application+
+      # Default layout is: +app/views/merriweather/layouts/merriweather_application+
       # 
       def get_layout
         layout ||= Merriweather::Config[:layout]

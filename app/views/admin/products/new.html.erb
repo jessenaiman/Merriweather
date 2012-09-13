@@ -1,6 +1,6 @@
-<%= render :partial => 'spree/admin/shared/product_sub_menu' %>
+<%= render :partial => 'merriweather/admin/shared/product_sub_menu' %>
 
-<%= render :partial => 'spree/shared/error_messages', :locals => { :target => @product } %>
+<%= render :partial => 'merriweather/shared/error_messages', :locals => { :target => @product } %>
 
 <%= form_for [:admin, @product], :html => { :multipart => true } do |f| %>
 <fieldset data-hook="new_product">
@@ -47,10 +47,10 @@
   </div>
   
   <div class="clearfix" data-hook="product-from-prototype" id="product-from-prototype">
-    <%= render :file => 'spree/admin/prototypes/show' if @prototype %>
+    <%= render :file => 'merriweather/admin/prototypes/show' if @prototype %>
   </div>
 
-  <%= render :partial => 'spree/admin/shared/new_resource_links' %>
+  <%= render :partial => 'merriweather/admin/shared/new_resource_links' %>
   
 </fieldset>
 <% end %>

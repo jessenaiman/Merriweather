@@ -2,7 +2,7 @@ module Merriweather
   module Core
     class Engine < ::Rails::Engine
       isolate_namespace Merriweather
-      engine_name 'spree'
+      engine_name 'merriweather'
 
       config.middleware.use "Merriweather::Core::Middleware::SeoAssist"
       config.middleware.use "Merriweather::Core::Middleware::RedirectLegacyProductUrl"
@@ -15,7 +15,7 @@ module Merriweather
       config.to_prepare &method(:activate).to_proc
 
       config.after_initialize do
-        ActiveSupport::Notifications.subscribe(/^spree\./) do |*args|
+        ActiveSupport::Notifications.subscribe(/^merriweather\./) do |*args|
           event_name, start_time, end_time, id, payload = args
           Activator.active.event_name_starts_with(event_name).each do |activator|
             payload[:event_name] = event_name
@@ -35,41 +35,41 @@ module Merriweather
       end
 
 
-      initializer "spree.environment", :before => :load_config_initializers do |app|
-        app.config.spree = Merriweather::Core::Environment.new
-        Merriweather::Config = app.config.spree.preferences #legacy access
+      initializer "merriweather.environment", :before => :load_config_initializers do |app|
+        app.config.merriweather = Merriweather::Core::Environment.new
+        Merriweather::Config = app.config.merriweather.preferences #legacy access
       end
 
-      initializer "spree.load_preferences", :before => "spree.environment" do
+      initializer "merriweather.load_preferences", :before => "merriweather.environment" do
         ::ActiveRecord::Base.send :include, Merriweather::Preferences::Preferable
       end
 
-      initializer "spree.register.calculators" do |app|
-        app.config.spree.calculators.shipping_methods = [
+      initializer "merriweather.register.calculators" do |app|
+        app.config.merriweather.calculators.shipping_methods = [
             Merriweather::Calculator::FlatPercentItemTotal,
             Merriweather::Calculator::FlatRate,
             Merriweather::Calculator::FlexiRate,
             Merriweather::Calculator::PerItem,
             Merriweather::Calculator::PriceSack]
 
-         app.config.spree.calculators.tax_rates = [
+         app.config.merriweather.calculators.tax_rates = [
             Merriweather::Calculator::DefaultTax]
       end
 
-      initializer "spree.register.payment_methods" do |app|
-        app.config.spree.payment_methods = [
+      initializer "merriweather.register.payment_methods" do |app|
+        app.config.merriweather.payment_methods = [
             Merriweather::Gateway::Bogus,
             Merriweather::Gateway::BogusSimple,
             Merriweather::PaymentMethod::Check ]
       end
 
       # filter sensitive information during logging
-      initializer "spree.params.filter" do |app|
+      initializer "merriweather.params.filter" do |app|
         app.config.filter_parameters += [:password, :password_confirmation, :number]
       end
 
       # sets the manifests / assets to be precompiled, even when initialize_on_precompile is false
-      initializer "spree.assets.precompile", :group => :all do |app|
+      initializer "merriweather.assets.precompile", :group => :all do |app|
         app.config.assets.precompile += %w[
           store/all.*
           admin/all.*
@@ -81,7 +81,7 @@ module Merriweather
         ]
       end
 
-      initializer "spree.mail.settings" do |app|
+      initializer "merriweather.mail.settings" do |app|
         if Merriweather::MailMethod.table_exists?
           Merriweather::Core::MailSettings.init
           Mail.register_interceptor(Merriweather::Core::MailInterceptor)

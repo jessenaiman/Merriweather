@@ -5,7 +5,7 @@
 
 /**
 This is a collection of javascript functions and whatnot
-under the spree namespace that do stuff we find helpful.
+under the merriweather namespace that do stuff we find helpful.
 Hopefully, this will evolve into a propper class.
 **/
 
@@ -63,7 +63,7 @@ $.fn.productPicker = function(){
 
 handle_date_picker_fields = function(){
   $('.datepicker').datepicker({
-    dateFormat: "<%= ::I18n.t(:format, :scope => 'spree.date_picker', :default => 'yy/mm/dd') %>",
+    dateFormat: "<%= ::I18n.t(:format, :scope => 'merriweather.date_picker', :default => 'yy/mm/dd') %>",
     dayNames: <%= ::I18n.t(:day_names, :scope => :date).to_json %>,
     dayNamesMin: <%= ::I18n.t(:abbr_day_names, :scope => :date).to_json %>,
     monthNames: <%= (::I18n.t(:month_names, :scope => :date).delete_if(&:blank?)).to_json %>,
@@ -157,7 +157,7 @@ $(document).ready(function(){
           $("#progress").show();
           positions = {};
           $.each($('table.sortable tbody tr'), function(position, obj){
-            reg = /spree_(\w+_?)+_(\d+)/;
+            reg = /merriweather_(\w+_?)+_(\d+)/;
             parts = reg.exec($(obj).attr('id'));
             if (parts) {
               positions['positions['+parts[2]+']'] = position;

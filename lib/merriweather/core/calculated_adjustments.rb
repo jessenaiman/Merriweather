@@ -9,7 +9,7 @@ module Merriweather
           validates :calculator, :presence => true
 
           def self.calculators
-            Rails.application.config.spree.calculators.send(self.to_s.tableize.gsub('/', '_').sub('spree_', ''))
+            Rails.application.config.merriweather.calculators.send(self.to_s.tableize.gsub('/', '_').sub('merriweather_', ''))
           end
         end
       end

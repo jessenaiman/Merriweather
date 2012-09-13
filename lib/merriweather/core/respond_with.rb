@@ -7,7 +7,7 @@ module ActionController
       if collector = retrieve_collector_from_mimes(&block)
         options = resources.size == 1 ? {} : resources.extract_options!
 
-        if defined_response = collector.response and !Merriweather::BaseController.spree_responders.keys.include?(self.class.to_s.to_sym)
+        if defined_response = collector.response and !Merriweather::BaseController.merriweather_responders.keys.include?(self.class.to_s.to_sym)
           if action = options.delete(:action)
             render :action => action
           else
@@ -30,13 +30,13 @@ module Merriweather
       extend ActiveSupport::Concern
 
       included do
-        cattr_accessor :spree_responders
-        self.spree_responders = {}
+        cattr_accessor :merriweather_responders
+        self.merriweather_responders = {}
       end
 
       module ClassMethods
         def clear_overrides!
-          self.spree_responders = {}
+          self.merriweather_responders = {}
         end
 
         def respond_override(options={})
@@ -59,7 +59,7 @@ module Merriweather
               options = {action_name.to_sym => {format_name.to_sym => {:success => format_value}}}
             end
 
-            self.spree_responders.deep_merge!(self.name.to_sym => options)
+            self.merriweather_responders.deep_merge!(self.name.to_sym => options)
           end
         end
       end

@@ -1,4 +1,4 @@
-<%= render :partial => 'spree/admin/shared/configuration_menu' %>
+<%= render :partial => 'merriweather/admin/shared/configuration_menu' %>
 
 <h1><%= t(:states) %></h1>
 
@@ -9,7 +9,7 @@
   </select>
 </p>
 
-<%= image_tag 'spinner.gif', :plugin => 'spree', :style => 'display:none;', :id => 'busy_indicator' %>
+<%= image_tag 'spinner.gif', :plugin => 'merriweather', :style => 'display:none;', :id => 'busy_indicator' %>
 
 <div id="state-list" data-hook>
   <%= render :partial => 'state_list'%>

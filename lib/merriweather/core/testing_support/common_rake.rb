@@ -1,5 +1,5 @@
 unless defined?(Merriweather::InstallGenerator)
-  require 'generators/spree/install/install_generator'
+  require 'generators/merriweather/install/install_generator'
 end
 
 desc "Generates a dummy app for testing"

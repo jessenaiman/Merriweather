@@ -11,7 +11,7 @@ FactoryGirl.define do
     #display_on :front_end
   end
 
-  # authorize.net was moved to spree_gateway. Leaving this factory
+  # authorize.net was moved to merriweather_gateway. Leaving this factory
   # in place with bogus in case anyone is using it
   factory :authorize_net_payment_method, :class => Merriweather::Gateway::BogusSimple do
     name 'Credit Card'

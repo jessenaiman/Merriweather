@@ -1,4 +1,4 @@
-<%= render :partial => 'spree/admin/shared/configuration_menu' %>
+<%= render :partial => 'merriweather/admin/shared/configuration_menu' %>
 
 <h1><%= t(:general_settings) %></h1>
 
@@ -32,7 +32,7 @@
   </tr>
   <tr>
     <td colspan="2">
-      <%= (Merriweather::Config[:check_for_spree_alerts] ? t("spree_alert_checking") : t("spree_alert_not_checking")) %>
+      <%= (Merriweather::Config[:check_for_merriweather_alerts] ? t("merriweather_alert_checking") : t("merriweather_alert_not_checking")) %>
     </td>
   </tr>
 </table>

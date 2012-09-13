@@ -1,7 +1,7 @@
 module Merriweather
   module Core
     module UrlHelpers
-      def spree
+      def merriweather
         Merriweather::Core::Engine.routes.url_helpers
       end
     end

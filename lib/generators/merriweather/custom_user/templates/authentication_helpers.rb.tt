@@ -1,0 +1,28 @@
+module Merriweather
+  module AuthenticationHelpers
+    def self.included(receiver)
+      receiver.send :helper_method, :merriweather_login_path
+      receiver.send :helper_method, :merriweather_signup_path
+      receiver.send :helper_method, :merriweather_logout_path
+      receiver.send :helper_method, :merriweather_current_user
+    end
+
+    def merriweather_current_user
+      current_user
+    end
+
+    def merriweather_login_path
+      main_app.login_path
+    end
+
+    def merriweather_signup_path
+      main_app.signup_path
+    end
+
+    def merriweather_logout_path
+      main_app.logout_path
+    end
+  end
+end
+
+ApplicationController.send :include, Merriweather::AuthenticationHelpers

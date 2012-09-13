@@ -8,9 +8,9 @@
 
 <%= javascript_tag do %>
   Merriweather.routes = <%== {
-    :product_search       => spree.admin_products_path(:format => 'json'),
-    :product_search_basic => spree.admin_products_path(:format => 'json', :json_format => 'basic', :limit => 10),
-    :user_search          => spree.admin_search_users_path(:format => 'json', :limit => 10)
+    :product_search       => merriweather.admin_products_path(:format => 'json'),
+    :product_search_basic => merriweather.admin_products_path(:format => 'json', :json_format => 'basic', :limit => 10),
+    :user_search          => merriweather.admin_search_users_path(:format => 'json', :limit => 10)
   }.to_json %>;
 
   strings = <%==
@@ -20,7 +20,7 @@
 <% end %>
 
 <%= javascript_tag do -%>
-  jQuery.alerts.dialogClass = 'spree';
+  jQuery.alerts.dialogClass = 'merriweather';
   <%== "var AUTH_TOKEN = #{form_authenticity_token.inspect};" %>
 <% end -%>
 

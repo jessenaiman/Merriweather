@@ -1,6 +1,6 @@
-<%= render :partial => 'spree/admin/shared/product_sub_menu' %>
+<%= render :partial => 'merriweather/admin/shared/product_sub_menu' %>
 <h1><%= t(:editing_option_type) %></h1>
-<%= render :partial => 'spree/shared/error_messages', :locals => { :target => @option_type } %>
+<%= render :partial => 'merriweather/shared/error_messages', :locals => { :target => @option_type } %>
 <%= form_for [:admin, @option_type] do |f| %>
 <fieldset>
   <legend><%= t(:editing_option_type) %></legend>
@@ -27,6 +27,6 @@
     <%= link_to_add_fields t(:add_option_value), "tbody#option_values" %>
   </span>
 
-  <%= render :partial => 'spree/admin/shared/edit_resource_links' %>
+  <%= render :partial => 'merriweather/admin/shared/edit_resource_links' %>
 </fieldset>
 <% end %>

@@ -4,11 +4,11 @@ module Merriweather
   #   the current contents are mainly for testing and documentation
 
   # To override this file...
-  #   1) Make a copy of it in your sites local /lib/spree folder
+  #   1) Make a copy of it in your sites local /lib/merriweather folder
   #   2) Add it to the config load path, or require it in an initializer, e.g...
   #
-  #      # config/initializers/spree.rb
-  #      require 'spree/product_filters'
+  #      # config/initializers/merriweather.rb
+  #      require 'merriweather/product_filters'
   #
 
   # set up some basic filters for use with products

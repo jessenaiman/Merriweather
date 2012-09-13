@@ -1,6 +1,6 @@
 <table class="index" data-hook="adjustments">
   <tr data-hook="adjustmment_head">
-    <th><%= "#{t('spree.date')}/#{t('spree.time')}" %></th>
+    <th><%= "#{t('merriweather.date')}/#{t('merriweather.time')}" %></th>
     <th><%= t(:description) %></th>
     <th><%= t(:amount) %></th>
     <th></th>
@@ -9,7 +9,7 @@
        @edit_url = edit_admin_order_adjustment_path(@order, adjustment)
        @delete_url = admin_order_adjustment_path(@order, adjustment)
   %>
-    <tr id="<%= spree_dom_id(adjustment) %>" data-hook="adjustment_row">
+    <tr id="<%= merriweather_dom_id(adjustment) %>" data-hook="adjustment_row">
       <td><%= adjustment.created_at.to_s(:date_time24) %></td>
       <td><%= adjustment.label %></td>
       <td><%= adjustment.display_amount %></td>

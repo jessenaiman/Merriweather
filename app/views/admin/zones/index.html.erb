@@ -1,4 +1,4 @@
-<%= render :partial => 'spree/admin/shared/configuration_menu' %>
+<%= render :partial => 'merriweather/admin/shared/configuration_menu' %>
 
 <div class="toolbar" data-hook="toolbar">
   <ul class="actions">
@@ -24,7 +24,7 @@
   </thead>
   <tbody>
     <% @zones.each do |zone| %>
-      <tr id="<%= spree_dom_id zone %>" data-hook="zones_row">
+      <tr id="<%= merriweather_dom_id zone %>" data-hook="zones_row">
         <td><%=zone.name %></td>
         <td><%=zone.description %></td>
         <td><%=zone.default_tax %></td>

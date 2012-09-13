@@ -1,8 +1,8 @@
-<%= render :partial => 'spree/admin/shared/product_sub_menu' %>
+<%= render :partial => 'merriweather/admin/shared/product_sub_menu' %>
 
-<%= render :partial => 'spree/admin/shared/product_tabs', :locals => { :current => 'Product Properties' } %>
+<%= render :partial => 'merriweather/admin/shared/product_tabs', :locals => { :current => 'Product Properties' } %>
 
-<%= render :partial => 'spree/shared/error_messages', :locals => { :target => @product } %>
+<%= render :partial => 'merriweather/shared/error_messages', :locals => { :target => @product } %>
 
 <%= form_for @product, :url => admin_product_url(@product), :method => :put do |f| %>
   <table class="index">
@@ -33,9 +33,9 @@
     </span>
   </p>
   <div id="prototypes" data-hook></div>
-    <%= image_tag 'spinner.gif', :plugin => 'spree', :style => 'display:none;', :id => 'busy_indicator' %>
+    <%= image_tag 'spinner.gif', :plugin => 'merriweather', :style => 'display:none;', :id => 'busy_indicator' %>
     <br />
-  <%= render :partial => 'spree/admin/shared/edit_resource_links' %>
+  <%= render :partial => 'merriweather/admin/shared/edit_resource_links' %>
 <% end %>
 
 <%= javascript_tag do -%>

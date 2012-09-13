@@ -9,7 +9,7 @@
   <br class="clear" />
 </div>
 
-<%= render :partial => 'spree/admin/shared/order_tabs', :locals => { :current => 'Payments' } %>
+<%= render :partial => 'merriweather/admin/shared/order_tabs', :locals => { :current => 'Payments' } %>
 
 <% if @order.outstanding_balance? %>
   <p><%= @order.outstanding_balance < 0 ? t(:credit_owed) : t(:balance_due) %> <strong><%= money(@order.outstanding_balance) %></strong></p>

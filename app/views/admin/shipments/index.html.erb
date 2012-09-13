@@ -6,7 +6,7 @@
   </ul>
   <br class="clear" />
 </div>
-<%= render :partial => 'spree/admin/shared/order_tabs', :locals => { :current => 'Shipments' } %>
+<%= render :partial => 'merriweather/admin/shared/order_tabs', :locals => { :current => 'Shipments' } %>
 <table class="index">
   <tr data-hook="admin_shipments_index_headers">
     <th><%= t(:shipment_number) %></th>
@@ -14,13 +14,13 @@
     <th><%= t(:shipping_cost) %></th>
     <th><%= t(:tracking) %></th>
     <th><%= t(:status) %></th>
-    <th><%= "#{t('spree.date')}/#{t('spree.time')}" %></th>
+    <th><%= "#{t('merriweather.date')}/#{t('merriweather.time')}" %></th>
     <th data-hook="admin_shipments_index_header_actions">
       <%= t(:action) %>
     </th>
   </tr>
   <% @shipments.each do |shipment| %>
-    <tr id="<%= spree_dom_id shipment %>" data-hook="admin_shipments_index_rows">
+    <tr id="<%= merriweather_dom_id shipment %>" data-hook="admin_shipments_index_rows">
       <td><%= shipment.number %></td>
       <td><%= shipment.shipping_method.name if shipment.shipping_method %></td>
       <td><%= money shipment.cost %></td>

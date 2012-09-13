@@ -1,4 +1,4 @@
-<%= render :partial => 'spree/admin/shared/product_sub_menu' %>
+<%= render :partial => 'merriweather/admin/shared/product_sub_menu' %>
 
 <div class="toolbar" data-hook="toolbar">
   <ul class="actions">
@@ -21,7 +21,7 @@
   </tr>
   <tbody>
   <% @option_types.each do |option_type| %>
-    <tr class="spree_option_type" id="<%= spree_dom_id option_type %>" data-hook="option_row">
+    <tr class="merriweather_option_type" id="<%= merriweather_dom_id option_type %>" data-hook="option_row">
       <td><span class="handle"></span> <%= option_type.name %></td>
       <td class="presentation"><%= option_type.presentation %></td>
       <td class="actions">

@@ -9,12 +9,12 @@ require 'rspec/autorun'
 Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 
 require 'database_cleaner'
-require 'spree/core/testing_support/factories'
-require 'spree/core/testing_support/env'
-require 'spree/core/testing_support/controller_requests'
-require 'spree/core/testing_support/authorization_helpers'
+require 'merriweather/core/testing_support/factories'
+require 'merriweather/core/testing_support/env'
+require 'merriweather/core/testing_support/controller_requests'
+require 'merriweather/core/testing_support/authorization_helpers'
 
-require 'spree/core/url_helpers'
+require 'merriweather/core/url_helpers'
 require 'paperclip/matchers'
 
 RSpec.configure do |config|

@@ -1,6 +1,6 @@
 module Merriweather
   class OldPrefs < ActiveRecord::Base
-    self.table_name = "spree_preferences"
+    self.table_name = "merriweather_preferences"
     belongs_to  :owner, :polymorphic => true
     attr_accessor :owner_klass
   end

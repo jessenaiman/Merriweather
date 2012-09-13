@@ -4,22 +4,22 @@
 # Inside your spec_helper.rb, include this module inside the RSpec.configure
 # block by doing this:
 #
-#   require 'spree/core/testing_support/controller_requests'
+#   require 'merriweather/core/testing_support/controller_requests'
 #   RSpec.configure do |c|
 #     c.include Merriweather::Core::TestingSupport::ControllerRequests, :type => :controller
 #   end
 #
-# Then, in your controller tests, you can access spree routes like this:
+# Then, in your controller tests, you can access merriweather routes like this:
 #
 #   require 'spec_helper'
 #
 #   describe Merriweather::ProductsController do
 #     it "can see all the products" do
-#       spree_get :index
+#       merriweather_get :index
 #     end
 #   end
 #
-# Use spree_get, spree_post, spree_put or spree_delete to make requests
+# Use merriweather_get, merriweather_post, merriweather_put or merriweather_delete to make requests
 # to the Merriweather engine, and use regular get, post, put or delete to make
 # requests to your application.
 #
@@ -27,37 +27,37 @@ module Merriweather
   module Core
     module TestingSupport
       module ControllerRequests
-        def spree_get(action, parameters = nil, session = nil, flash = nil)
-          process_spree_action(action, parameters, session, flash, "GET")
+        def merriweather_get(action, parameters = nil, session = nil, flash = nil)
+          process_merriweather_action(action, parameters, session, flash, "GET")
         end
 
         # Executes a request simulating POST HTTP method and set/volley the response
-        def spree_post(action, parameters = nil, session = nil, flash = nil)
-          process_spree_action(action, parameters, session, flash, "POST")
+        def merriweather_post(action, parameters = nil, session = nil, flash = nil)
+          process_merriweather_action(action, parameters, session, flash, "POST")
         end
 
         # Executes a request simulating PUT HTTP method and set/volley the response
-        def spree_put(action, parameters = nil, session = nil, flash = nil)
-          process_spree_action(action, parameters, session, flash, "PUT")
+        def merriweather_put(action, parameters = nil, session = nil, flash = nil)
+          process_merriweather_action(action, parameters, session, flash, "PUT")
         end
 
         # Executes a request simulating DELETE HTTP method and set/volley the response
-        def spree_delete(action, parameters = nil, session = nil, flash = nil)
-          process_spree_action(action, parameters, session, flash, "DELETE")
+        def merriweather_delete(action, parameters = nil, session = nil, flash = nil)
+          process_merriweather_action(action, parameters, session, flash, "DELETE")
         end
 
-        def spree_xhr_get(action, parameters = nil, session = nil, flash = nil)
+        def merriweather_xhr_get(action, parameters = nil, session = nil, flash = nil)
           parameters ||= {}
           parameters.reverse_merge!(:format => :json)
-          parameters.merge!(:use_route => :spree)
+          parameters.merge!(:use_route => :merriweather)
           xml_http_request(:get, action, parameters, session, flash)
         end
 
         private
 
-        def process_spree_action(action, parameters = nil, session = nil, flash = nil, method = "GET")
+        def process_merriweather_action(action, parameters = nil, session = nil, flash = nil, method = "GET")
           parameters ||= {}
-          process(action, parameters.merge!(:use_route => :spree), session, flash, method)
+          process(action, parameters.merge!(:use_route => :merriweather), session, flash, method)
         end
       end
     end

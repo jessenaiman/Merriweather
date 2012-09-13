@@ -40,7 +40,7 @@ module Merriweather
                 conn = ff.model_class.respond_to?(:connection) ? ff.model_class.connection : connection
                 table_rows = ff.table_rows
 
-                # REMOVED BY SPREE
+                # REMOVED BY merriweather
                 # table_rows.keys.each do |table|
                 #   conn.delete "DELETE FROM #{conn.quote_table_name(table)}", 'Fixture Delete'
                 # end

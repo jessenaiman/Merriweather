@@ -11,7 +11,7 @@
       <%= t(method.name, :scope => :payment_methods, :default => method.name) %>
     </label>
 
-    <%= render :partial => "spree/admin/payments/source_forms/#{method.method_type}", :locals => { :payment_method => method } %>
+    <%= render :partial => "merriweather/admin/payments/source_forms/#{method.method_type}", :locals => { :payment_method => method } %>
 
   <% end %>
 </div>

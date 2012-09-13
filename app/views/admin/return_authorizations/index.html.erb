@@ -9,18 +9,18 @@
   </div>
 <% end %>
 
-<%= render :partial => 'spree/admin/shared/order_tabs', :locals => { :current => 'Return Authorizations' } %>
+<%= render :partial => 'merriweather/admin/shared/order_tabs', :locals => { :current => 'Return Authorizations' } %>
 
 <table class="index">
   <tr data-hook="rma_header">
     <th><%= t(:rma_number) %></th>
     <th><%= t(:status) %></th>
     <th><%= t(:amount) %></th>
-    <th><%= "#{t('spree.date')}/#{t('spree.time')}" %></th>
+    <th><%= "#{t('merriweather.date')}/#{t('merriweather.time')}" %></th>
     <th></th>
   </tr>
   <% @return_authorizations.each do |return_authorization| %>
-    <tr id="<%= spree_dom_id(return_authorization) %>" data-hook="rma_row">
+    <tr id="<%= merriweather_dom_id(return_authorization) %>" data-hook="rma_row">
       <td><%= return_authorization.number %></td>
       <td><%= t(return_authorization.state.downcase) %></td>
       <td><%= money return_authorization.amount %></td>

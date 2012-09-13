@@ -9,7 +9,7 @@
   <br class="clear" />
 </div>
 
-<%= render :partial => 'spree/admin/shared/order_tabs', :locals => { :current => 'Shipments' } %>
+<%= render :partial => 'merriweather/admin/shared/order_tabs', :locals => { :current => 'Shipments' } %>
 
 <div data-hook="admin_shipment_edit_header">
   <h2><%= t(:shipment) %> #<%= @shipment.number%> (<%= t(@shipment.state.to_sym, :scope => :state_names, :default => @shipment.state.to_s.humanize) %>)</h2>
@@ -17,7 +17,7 @@
     <h3><%= t(:charges) %> <%= money @shipment.cost %></h3>
   <% end %>
 
-  <%= render :partial => 'spree/shared/error_messages', :locals => { :target => @shipment } %>
+  <%= render :partial => 'merriweather/shared/error_messages', :locals => { :target => @shipment } %>
 </div>
 
 <div data-hook="admin_shipment_edit_form">
@@ -26,7 +26,7 @@
 
       <div data-hook="admin_shipment_edit_form_buttons">
         <p class="form-buttons">
-          <% if @shipment.editable_by?(try_spree_current_user) %>
+          <% if @shipment.editable_by?(try_merriweather_current_user) %>
             <%= button @order.cart? ? t(:continue) : t(:update) %>
             <%= t(:or) %> <%= link_to t(:cancel), admin_order_shipments_path(@order) %>
           <% else %>
